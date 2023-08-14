@@ -1,0 +1,43 @@
+App Folder: 
+contains the models at its root. Models represents out database entities and have predefined methods for querying the respective tables that they represent.
+
+	HTTP Folder:
+	Controllers subdirectory contains the project's controllers where we defice our application logic
+
+Database Folder:
+Migrations subdirectory contains the migrations that we will use to define the structures and data types of our database tables
+
+Public Folder:
+This is where assets such as CSS, JS, images, etc can be stored and accessed.
+
+Resources Folder:
+Views subdirectory is the namespace where all views will be looked for by our application.
+
+Routes Folder:
+web.php file is where we define the reoutes of our application.
+
+****
+To run your Laravel application:
+php artisan serve
+
+To install Laravel's laravel/UI package via the terminal command:
+composer require laravel/ui
+
+Then build the authentical scaffolding via the terminal command:
+php artisan ui bootstrap --auth
+
+		To add bootstrap:
+		resources > views > layouts > app.blade.php
+			import the link of css 
+
+
+To create a Model:
+php artisan make:model name_model -mc
+
+Create a database in XAMPP by going to phpMyAdmin
+
+Attach the backend using .env 
+	keep the 
+
+To migrate:
+php artisan migrate
