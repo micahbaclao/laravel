@@ -18,7 +18,8 @@ web.php file is where we define the reoutes of our application.
 
 ****
 To run your Laravel application:
-php artisan serve
+1. php artisan serve
+2. npm install && npm run dev
 
 To install Laravel's laravel/UI package via the terminal command:
 composer require laravel/ui
@@ -28,7 +29,7 @@ php artisan ui bootstrap --auth
 
 		To add bootstrap:
 		resources > views > layouts > app.blade.php
-			import the link of css 
+			import the link of css & js
 
 
 To create a Model:
