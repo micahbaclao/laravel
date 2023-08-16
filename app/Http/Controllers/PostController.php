@@ -65,10 +65,37 @@ class PostController extends Controller
         }
     }
 
-    // Action that will
+    // Action that will return a view showing a specific post using the URL parameter $id to query for the database entry to be shown
     public function show($id)
     {
-        $post = Post::find($id);
-        return view('posts.show')->with('post', $post);
+        // Find the Post record with the given $id or throw an exception if not found
+        $post = Post::findOrFail($id);
+
+        // Pass the retrieved Post model instance to the 'posts.show' view using the compact function to create an associative array with the variable name 'post'
+        return view('posts.show', compact('post'));
     }
+
+
+    // Action that will edit a specific post
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
+    }
+
+    // Action that will update the edited post
+    public function update(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+
+        // Update the title and content of the Post with data from the incoming Request
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->save();
+
+        return redirect()->route('posts.show', ['id' => $post->id])->with('success', 'Post updated successfully.');
+    }
+
+
+
 }

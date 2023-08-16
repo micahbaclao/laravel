@@ -20,7 +20,7 @@
                     @if(Auth::user()->id == $post->user_id)
                         <div class = "card-footer">
                             <form method = "POST">
-                                <a href="" class = "btn btn-primary">Edit Post</a>.
+                                <a href="{{ route('posts.edit', ['id' => $post->id]) }}" class="btn btn-primary">Edit Post</a>
                                 <button class = "btn btn-danger">Delete Post</button>
                             </form>
                         </div>

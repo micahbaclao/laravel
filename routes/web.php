@@ -42,4 +42,13 @@ Route::get('', [PostController::class, 'welcome']);
 Route::get('/myPosts', [PostController::class, 'myPosts']);
 
 //Define a route wherein a view showing a specific post with matching URL parameter ID will be returned to the user
-Route::get('/posts/{id}', [PostController::class, 'show']);
+// Route::get('/posts/{id}', [PostController::class, 'show']);
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+
+//Define a route for editing a post
+Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+
+//Route for updating a post
+Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+
+
