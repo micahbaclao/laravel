@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('tabName')
+    Create Post
+@endsection
+
 @section('content')
 
 	

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('tabName')
+    {{$post->title}}
+@endsection
+
 @section('content')
     <div class="card col-6 mx-auto">
         <div class="card-body">

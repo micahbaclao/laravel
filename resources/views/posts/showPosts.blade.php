@@ -1,5 +1,9 @@
 @extends("layouts.app")
 
+@section('tabName')
+    Newsfeed
+@endsection
+
 @section('content')
     <h3>Newsfeed</h3>
 

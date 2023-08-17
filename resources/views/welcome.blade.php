@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('tabName')
+    Welcome
+@endsection
+
 @section('content')
 <img src="https://cdn.freebiesupply.com/logos/large/2x/laravel-1-logo-png-transparent.png" class="rounded col-4 mx-auto d-block" alt="...">
 

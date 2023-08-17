@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('tabName')
+    Edit Post
+@endsection
+
 @section('content')
 <div class="container col-6 mx-auto">
 
