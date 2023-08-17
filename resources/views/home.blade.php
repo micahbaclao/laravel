@@ -14,7 +14,12 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('You are logged in. Time to sprinkle some digital magic!') }}
+
+                    <!-- Add Create Post button -->
+                    <div class="mt-3">
+                        <a href="/posts/create" class="btn btn-primary">{{ __('Create a Post') }}</a>
+                    </div>
                 </div>
             </div>
         </div>

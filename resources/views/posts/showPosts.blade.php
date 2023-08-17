@@ -22,16 +22,17 @@
                 @if(Auth::user())
                     <!-- if the authenticated user is the author of this blog post -->
                     @if(Auth::user()->id == $post->user_id)
-                        <div class = "card-footer">
-                            <form method = "POST">
+                        <div class="card-footer">
+                            <form method="POST" id="archive-form-{{ $post->id }}" action="{{ route('posts.archive', ['id' => $post->id]) }}">
+                                @csrf
+                                @method('DELETE')
                                 <a href="{{ route('posts.edit', ['id' => $post->id]) }}" class="btn btn-primary">Edit Post</a>
-                                <button class = "btn btn-danger">Delete Post</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to archive this post?')">Delete Post</button>
                             </form>
                         </div>
                     @endif
 
                 @endif
-
             </div>
 
         @endforeach

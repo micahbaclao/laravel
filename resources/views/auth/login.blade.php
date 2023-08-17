@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('tabName')
+    Login
+@endsection
+
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -51,19 +56,29 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
+                        <div class="row mb-3">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                                <div class="mt-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        @if (Route::has('password.request'))
+                                            <a class="btn btn-link p-0" href="{{ route('password.request') }}">
+                                                {{ __('Forgot Your Password?') }}
+                                            </a>
+                                        @endif
+                                    </div>
+
+                                    <div class="text-muted mt-2">
+                                        Not Registered Yet? <a href="{{ route('register') }}" class="text-primary">Register here.</a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>

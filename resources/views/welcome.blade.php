@@ -12,7 +12,7 @@
 
     <div class="column justify-content-center">
         @foreach($randomPosts as $post)
-            <div class = "card text-center col-3 mx-auto mt-2">
+            <div class="card text-center col-3 mx-auto mt-2">
                 <div class="card-body">
                     <a href="/posts/{{$post->id}}">{{$post->title}}</a>
                     <p class="card-subtitle mb-3 text-muted">Author: {{ $post->user->name }}</p>
@@ -22,9 +22,13 @@
     </div>
 
 @else
-    <div class="text-center">
-        <h2>There are no featured posts to show</h2>
-        <a href="{{ route('posts.create') }}" class="btn btn-primary">Create Post</a>
+    <div class="text-center mt-3">
+        <h2>There are no fatured posts to show</h2>
+        @auth
+            <a href="/posts/create" class="btn btn-primary">Create Post</a>
+        @else
+            <a href="{{ route('login') }}" class="btn btn-primary">Login to Create a Post</a>
+        @endauth
     </div>
 @endif
 @endsection
