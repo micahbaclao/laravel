@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
+
 use App\Models\Post;
+use App\Models\PostLike;
 
 class PostController extends Controller
 {
@@ -114,5 +117,30 @@ class PostController extends Controller
         
         return redirect('/posts')->with('archived', 'Post archived successfully.');
     }
+
+    public function like($id){
+        $post = Post::find($id);
+
+        if($post->user_id != Auth::user()->id){
+
+            if($post->likes->contains("user_id", Auth::user()->id)){
+                //delete the like record made by the user before
+                PostLike::where('post_id', $post->id)->where('user_id', Auth::user()->id)->delete();
+            }else{
+                //create a new like record to like this post
+                //instantiate a new PostLike object from the Postlike model
+                $postlike = new PostLike;
+                //define the properties of the $postlike
+                $postlike->post_id = $post->id;
+                $postlike->user_id = Auth::user()->id;
+
+                //save this postlike object in the database
+                $postlike->save();
+            }
+        }
+
+        return redirect("/posts/$id");
+    }
+
 
 }

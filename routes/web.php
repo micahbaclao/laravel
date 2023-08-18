@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostController;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,10 @@ Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update
 
 //Route for archiving a post
 Route::delete('/posts/{id}', [PostController::class, 'archive'])->name('posts.archive');
+
+//Define a web rout that will call the function for liking and unliking a specific post:
+Route::put('/posts/{id}/like', [PostController::class, 'like']);
+
 
 
 // Route::get('/posts', [PostController::class, 'showPosts']);

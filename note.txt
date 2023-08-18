@@ -35,6 +35,9 @@ php artisan ui bootstrap --auth
 To create a Model:
 php artisan make:model name_model -mc
 
+To create a new Migration (Database > Migrations)
+php artisan make:migration create_post_likes_table
+
 Create a database in XAMPP by going to phpMyAdmin
 
 Attach the backend using .env 
