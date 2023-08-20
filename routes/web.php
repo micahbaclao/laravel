@@ -60,6 +60,6 @@ Route::delete('/posts/{id}', [PostController::class, 'archive'])->name('posts.ar
 //Define a web rout that will call the function for liking and unliking a specific post:
 Route::put('/posts/{id}/like', [PostController::class, 'like']);
 
+// Route to handle commenting
+Route::post('/posts/{id}/comment', [PostController::class, 'comment'])->name('posts.comment');
 
-
-// Route::get('/posts', [PostController::class, 'showPosts']);

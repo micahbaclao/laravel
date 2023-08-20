@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Post;
 use App\Models\PostLike;
+use App\Models\PostComment;
+
 
 class PostController extends Controller
 {
@@ -76,12 +78,24 @@ class PostController extends Controller
     }
 
     // Action that will return a view showing a specific post using the URL parameter $id to query for the database entry to be shown
+    // public function show($id)
+    // {
+    //     // Find the Post record with the given $id or throw an exception if not found
+    //     $post = Post::findOrFail($id);
+
+    //     // Pass the retrieved Post model instance to the 'posts.show' view using the compact function to create an associative array with the variable name 'post'
+    //     return view('posts.show', compact('post'));
+    // }
+
     public function show($id)
     {
         // Find the Post record with the given $id or throw an exception if not found
         $post = Post::findOrFail($id);
 
-        // Pass the retrieved Post model instance to the 'posts.show' view using the compact function to create an associative array with the variable name 'post'
+        // Load the comments relationship
+        $post->load('comments');
+
+        // Pass the retrieved Post model instance to the 'posts.show' view
         return view('posts.show', compact('post'));
     }
 
@@ -140,6 +154,24 @@ class PostController extends Controller
         }
 
         return redirect("/posts/$id");
+    }
+
+
+    public function comment(Request $request, $id)
+    {
+        // Validate input
+        $request->validate([
+            'content' => 'required',
+        ]);
+
+        // Create a new comment
+        $comment = new PostComment();
+        $comment->content = $request->input('content');
+        $comment->post_id = $id;
+        $comment->user_id = auth()->user()->id;
+        $comment->save();
+
+        return redirect()->back()->with('success', 'Comment added successfully.');
     }
 
 
